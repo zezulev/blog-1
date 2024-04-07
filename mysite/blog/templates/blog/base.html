@@ -13,6 +13,13 @@
     <div id="sidebar">
         <h2>Мой блог</h2>
         <p>Это мой блог</p>
+        {% if user.is_authenticated %}
+            <p>{{ user.username }}</p>
+            <p><a href="{% url 'users:logout' %}">Выйти</a></p>
+        {% else %}
+        <p><a href="{% url 'users:login' %}">Войти</a></p>
+           <a href="{% url 'users:register' %}">Регистрация</a>
+        {% endif %}
     </div>
 </body>
 </html>
